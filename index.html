@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Toggle Gambar</title>
+  <title>Toggle Gambar dengan Kucing Tiap 6x Klik</title>
   <style>
     body {
       background-color: lightskyblue;
@@ -25,6 +25,8 @@
       cursor: pointer;
       border: none;
       background-color: transparent;
+      color: blue;
+      font-style: italic;
     }
     mark {
       background-color: white;
@@ -32,9 +34,6 @@
       display: inline-block;
       text-align: center;
       border-radius: 13px;
-    }
-    #tombol {
-      font-style: italic;
     }
   </style>
 </head>
@@ -48,20 +47,30 @@
   <script>
     let gambarAwal = "pixel.png";
     let gambarKedua = "picel.png";
+    let gambarKucing = "catxel.png ";
     let gambarSekarang = true;
+    let klikCount = 0;
 
     function gantiGambar() {
+      klikCount++;
       let img = document.getElementById("gambar");
       let tombol = document.getElementById("tombol");
 
-      if (gambarSekarang) {
-        img.src = gambarKedua;
-        tombol.innerText = "Buka";
+      if (klikCount % 6 === 0) {
+        // Jika kelipatan 6, tampilkan gambar kucing
+        img.src = gambarKucing;
+        tombol.innerText = "Meong!";
       } else {
-        img.src = gambarAwal;
-        tombol.innerText = "Tutup";
+        // Selain kelipatan 6, tetap toggle antara gambarAwal dan gambarKedua
+        if (gambarSekarang) {
+          img.src = gambarKedua;
+          tombol.innerText = "Buka";
+        } else {
+          img.src = gambarAwal;
+          tombol.innerText = "Tutup";
+        }
+        gambarSekarang = !gambarSekarang;
       }
-      gambarSekarang = !gambarSekarang;
     }
   </script>
 
