@@ -57,11 +57,9 @@
       let tombol = document.getElementById("tombol");
 
       if (klikCount % 6 === 0) {
-        // Jika kelipatan 6, tampilkan gambar kucing
         img.src = gambarKucing;
         tombol.innerText = "Meong!";
       } else {
-        // Selain kelipatan 6, tetap toggle antara gambarAwal dan gambarKedua
         if (gambarSekarang) {
           img.src = gambarKedua;
           tombol.innerText = "Buka";
